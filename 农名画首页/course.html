@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>农民画数字传承平台</title>
+    <style>
+        /* 基础样式 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Consolas', monospace;
+            background: linear-gradient(45deg, #00172E 0%, #003B76 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 知识科普时间轴 */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .timeline-card {
+            background: rgba(0, 20, 40, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 3px solid #00f3ff;
+            position: relative;
+        }
+
+        /* 在线课程模块 */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 互动创作面板 */
+        .canvas-container {
+            background: rgba(0, 40, 80, 0.9);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        #paintCanvas {
+            background: #fff;
+            border-radius: 8px;
+            cursor: crosshair;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            background: linear-gradient(45deg, #00f3ff, #0066ff);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <h1>农民画数字传承平台</h1>
+    </div>
+</nav>
+
+<div class="container">
+    <!-- 知识科普 -->
+    <section>
+        <h2>农民画知识百科</h2>
+        <div class="timeline">
+            <div class="timeline-card">
+                <h3>历史溯源</h3>
+                <p>起源于1950年代的民间艺术运动...</p>
+                <img src="images/history.png" alt="历史图片" style="width:50%;border-radius:8px;margin-top:1rem;">
+            </div>
+            <div class="timeline-card">
+                <h3>艺术特色</h3>
+                <br>
+                <ul>
+                    <li>色彩对比强烈</li>
+
+                    <li>构图饱满均衡</li>
+
+                    <li>生活气息浓厚</li>
+                </ul>
+            </div>
+            <div class="timeline-card">
+                <h3>创作技法</h3>
+                <p>传统工具：毛笔、水粉颜料、宣纸...</p>
+                <br>
+                <button class="btn">查看详细教程</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 在线课程 -->
+    <section>
+        <h2>数字艺术课程</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <img src="images/course.png" alt="基础课程" style="width:30%;border-radius:8px;margin-top:1rem;">
+                <div style="padding:1rem">
+                    <h3>农民画入门基础</h3>
+                    <p>时长：8课时 | 讲师：张艺农</p>
+                    <div style="display:flex;justify-content:space-between;margin-top:1rem">
+                        <span class="btn">立即报名</span>
+                        <span>🎓 已有235人学习</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 更多课程... -->
+        </div>
+    </section>
+
+    <!-- 互动创作 -->
+    <section>
+        <h2>数字创作体验</h2>
+        <div class="canvas-container">
+            <div class="toolbar">
+                <input type="color" id="colorPicker" value="#ff0000">
+                <input type="range" id="brushSize" min="1" max="20" value="5">
+                <button class="btn" onclick="clearCanvas()">清空画布</button>
+                <button class="btn" onclick="applyTemplate()">使用模板</button>
+            </div>
+            <canvas id="paintCanvas" width="800" height="500"></canvas>
+        </div>
+    </section>
+</div>
+
+<script>
+    // 画布互动功能
+    const canvas = document.getElementById('paintCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    // 初始化画布
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+    function startDrawing(e) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function draw(e) {
+        if (!isDrawing) return;
+        ctx.strokeStyle = document.getElementById('colorPicker').value;
+        ctx.lineWidth = document.getElementById('brushSize').value;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function stopDrawing() {
+        isDrawing = false;
+    }
+
+    function clearCanvas() {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function applyTemplate() {
+        // 简化的模板示例
+        ctx.fillStyle = '#ffeb3b';
+        ctx.fillRect(100, 100, 600, 300); // 黄色背景
+        ctx.fillStyle = '#f44336';
+        ctx.beginPath();
+        ctx.arc(400, 250, 50, 0, Math.PI * 2); // 红色圆形
+        ctx.fill();
+    }
+</script>
+</body>
+</html>
