@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开始页面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .start-btn {
+            padding: 20px 50px;
+            font-size: 24px;
+            border: none;
+            border-radius: 30px;
+            background: #fff;
+            color: #764ba2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 20px rgba(0,0,0,0.2);
+            background: #f8f9fa;
+        }
+
+        .start-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .loading-text {
+            display: none;
+            color: white;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <button class="start-btn" onclick="startRedirect()">开始体验</button>
+    <div class="loading-text" id="loadingText">正在跳转...</div>
+</div>
+
+<script>
+    function startRedirect() {
+        const btn = document.querySelector('.start-btn');
+        const loadingText = document.getElementById('loadingText');
+
+        // 添加点击效果
+        btn.style.transform = 'scale(0.95)';
+        loadingText.style.display = 'block';
+
+        // 1秒后跳转（实际使用时替换your-target-url.html）
+        setTimeout(() => {
+            window.location.href = '农名画首页/index.html'; // 替换为你的目标URL
+        }, 1000);
+
+        // 重置按钮状态
+        setTimeout(() => {
+            btn.style.transform = 'scale(1)';
+        }, 200);
+    }
+</script>
+</body>
+</html>

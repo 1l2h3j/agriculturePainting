@@ -1,4 +1,4 @@
-﻿ $(window).load(function(){$(".loading").fadeOut()})  
+﻿ $(window).load(function(){$(".loading").fadeOut()})
 $(function () {
     echarts_1();
 
@@ -23,7 +23,7 @@ option = {
         }
     },
  legend: {
-        data: ['业务1', '业务2', '业务3', '业务4'],
+        data: ['中部', '东部', '西部', '东北'],
         left: 'center',
         textStyle: {color: "#fff"},
     },
@@ -34,11 +34,12 @@ option = {
         bottom: '0',
         containLabel: true
     },
-  
+
     xAxis: [{
         type: 'category',
 		 boundaryGap: false,
-   data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+   // data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+   data: ['2006','2009', '2012', '2015', '2018', '2021', '2024',],
         axisLine: {
             lineStyle: {
                 color: 'rgba(255,255,255,0.12)'
@@ -53,7 +54,7 @@ option = {
         },
     }],
     yAxis: [{
-		splitNumber:3,
+		splitNumber:4,
         axisLabel: {
             formatter: '{value}',
             color: '#e2e9ff',
@@ -70,81 +71,85 @@ option = {
     }],
     series: [
 		{
-			name: '业务1',
+			name: '中部',
         type: 'line',
        smooth: true,
         symbol: 'circle',
         symbolSize: 5,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#fbc20e',
                 width: 2
             }
         },
-      
+
 		itemStyle: {normal: {color: '#fbc20e',}},
-        data: [6, 2, 5, 1, 7, 4, 13, 4, 18, 6, 8, 4],
-        
+        // data: [6, 2, 5, 1, 7, 4, 13, 4, 18, 6, 8, 4],
+        data: [500, 1050, 2100, 4300, 7400, 12300, 17500],
+
     },
 		{
-			name: '业务2',
+			name: '东部',
         type: 'line',
       smooth: true,
         symbol: 'circle',
         symbolSize: 3,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#f7717e',
                 width: 2
             }
         },
        	itemStyle: {normal: {color: '#f7717e',}},
-        data: [4, 6, 4, 8, 6, 8, 4, 6, 2, 5, 1, 7 ],
-        
+        // data: [4, 6, 4, 8, 6, 8, 4, 6, 2, 5, 1, 7 ],
+        data: [2000, 4000, 8000, 14500, 22700, 32000, 42500],
+
     },
 		{
-			name: '业务3',
+			name: '西部',
         type: 'line',
        smooth: true,
        symbol: 'circle',
         symbolSize: 3,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#4670f4',
                 width: 2
             }
         },
-        
+
 			itemStyle: {normal: {color: '#4670f4',}},
-        data: [8, 6, 8, 4,4, 6,  5,4,  6, 2, 1, 7 ],
-        
+        // data: [8, 6, 8, 4,4, 6,  5,4,  6, 2, 1, 7 ],
+        data: [250, 500, 1000, 2000, 4300, 7700, 12000],
+
     },
 		{
-			name: '业务4',
+			name: '东北',
         type: 'line',
      smooth: true,
         symbol: 'circle',
         symbolSize: 3,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#64cd84',
                 width: 2
             }
         },
-        
+
 			itemStyle: {normal: {color: '#64cd84',}},
-        data: [8,4, 6,  5,4,  6, 2, 1, 7, 6, 8, 4 ],
-        
+        // data: [8,4, 6,  5,4,  6, 2, 1, 7, 6, 8, 4 ],
+        data: [750, 1100, 1550, 2050, 2600, 3400, 4200],
+
     }
-		
+
 	]
 };
         // 使用刚指定的配置项和数据显示图表。
@@ -167,7 +172,7 @@ var option = {
           },
           yAxis: [{
             type: 'category',
-            data: ['textone', 'textwo', 'texthree', 'textfour'],
+            data: ['中部', '东部', '西部', '东北'],
             inverse: true,
             axisTick: { show: false},
             axisLabel: {
@@ -194,7 +199,7 @@ var option = {
           series: [{
             type: 'bar',
             barWidth: 10,
-            data: [100, 80, 70, 60],
+            data: [21.8, 50.9, 16.3, 10.9],
             label: {
               normal: {
                 show: true,
@@ -248,23 +253,23 @@ var option = {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('echart3'));
 var plantCap = [{
-       name: '发明',
-       value: '7'
+       name: '吉林东丰',
+       value: '6.5'
    }, {
-       name: '外观',
-       value: '15'
+       name: '上海金山',
+       value: '9.0'
    }, {
-       name: '商标',
-       value: '3'
+       name: '江苏邳州',
+       value: '7.5'
    }, {
-       name: '实用',
-       value: '11'
+       name: '山东日照',
+       value: '7.0'
    }, {
-       name: '超市',
-       value: '650'
+       name: '陕西户县',
+       value: '8.5'
    },{
-       name: '软件',
-       value: '7'
+       name: '青海湟中',
+       value: '6.0'
    }];
    var datalist = [{
        offset: [56, 48],
@@ -272,7 +277,7 @@ var plantCap = [{
       // opacity: .95,
        color: '#0050e4',
    }, {
-   
+
        offset: [30, 70],
        symbolSize: 60,
         color: '#fc4322'
@@ -280,7 +285,7 @@ var plantCap = [{
        offset: [0, 43],
        symbolSize: 40,
        color: '#e18310'
-   
+
    }, {
        offset: [93, 30],
        symbolSize: 60,
@@ -293,9 +298,9 @@ var plantCap = [{
        offset: [75, 75],
        symbolSize: 40,
         color: '#e18310'
-   
+
    }];
-   
+
    var datas = [];
    for (var i = 0; i < plantCap.length; i++) {
        var item = plantCap[i];
@@ -304,8 +309,8 @@ var plantCap = [{
            name: item.value + '\n' + item.name,
            value: itemToStyle.offset,
            symbolSize: itemToStyle.symbolSize,
-         
-   
+
+
            itemStyle: {
                normal: {
                   color: itemToStyle.color,
@@ -320,7 +325,7 @@ var plantCap = [{
            top: 10,
            bottom: 10
        },
-   
+
        xAxis: [{
            gridIndex: 0,
            type: 'value',
@@ -330,7 +335,7 @@ var plantCap = [{
            nameLocation: 'middle',
            nameGap: 5
        }],
-   
+
        yAxis: [{
            gridIndex: 0,
            min: 0,
@@ -351,12 +356,12 @@ var plantCap = [{
                    textStyle: {
                        fontSize: '12'
                    }
-                   
+
                },
            },
            data: datas
        }]
-   
+
    };
         myChart.setOption(option);
         window.addEventListener("resize",function(){
@@ -367,7 +372,7 @@ function echarts_4() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('echart4'));
 option = {
-	
+
     tooltip: {
         trigger: 'axis',
 
@@ -376,7 +381,7 @@ option = {
         }
     },
  legend: {
-        data: ['昨日', '今日'],
+        data: ['农民画产值（万元）', '冬季文旅收入（万元）'],
         left: 'center',
         textStyle: {color: "#fff"},
     },
@@ -387,11 +392,12 @@ option = {
         bottom: '0',
         containLabel: true
     },
-  
+
     xAxis: [{
         type: 'category',
 		 boundaryGap: false,
-   data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+   // data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+    data: ['2006', '2009', '2012', '2015', '2018', '2021', '2024'],
         axisLine: {
             lineStyle: {
                 color: 'rgba(255,255,255,0.12)'
@@ -423,41 +429,41 @@ option = {
     }],
     series: [
 		{
-			name: '昨日',
+			name: '农民画产值（万元）',
         type: 'line',
       //  smooth: true,
         symbol: 'circle',
         symbolSize: 5,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#fbc20e',
                 width: 2
             }
         },
-      
+
 		itemStyle: {normal: {color: '#fbc20e',}},
-        data: [6, 2, 5, 1, 7, 4, 13, 4, 18, 6, 8, 4],
-        
+        data: [400, 600, 850, 1100, 1400, 1800, 2200],
+
     },
 		{
-			name: '今日',
+			name: '冬季文旅收入（万元）',
         type: 'line',
      //   smooth: true,
         symbol: 'circle',
         symbolSize: 3,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#58c8da',
                 width: 2
             }
         },
        	itemStyle: {normal: {color: '#58c8da',}},
-        data: [4, 6, 4, 8, 6, 8, 4, 6, 2, 5, 1, 7 ],
-        
+        data: [150, 300, 550, 800, 1200, 1800, 2500],
+
     }
 	]
 };
@@ -477,7 +483,7 @@ option = {
         }
     },
  legend: {
-        data: ['昨日', '今日'],
+        data: ['创作者数量（人）', '政策补贴金额（万元）'],
         left: 'center',
         textStyle: {color: "#fff"},
     },
@@ -488,11 +494,12 @@ option = {
         bottom: '0',
         containLabel: true
     },
-  
+
     xAxis: [{
         type: 'category',
 		 boundaryGap: false,
-   data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+   // data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+   data: ['2006', '2009', '2012', '2015', '2018', '2021', '2024'],
         axisLine: {
             lineStyle: {
                 color: 'rgba(255,255,255,0.12)'
@@ -524,41 +531,41 @@ option = {
     }],
     series: [
 		{
-			name: '昨日',
+			name: '创作者数量（人）',
         type: 'line',
       //  smooth: true,
         symbol: 'circle',
         symbolSize: 5,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#fbc20e',
                 width: 2
             }
         },
-      
+
 		itemStyle: {normal: {color: '#fbc20e',}},
-       data: [8, 6, 8, 4,4, 6,  5,4,  6, 2, 1, 7 ],
-        
+       data: [80, 120, 180, 250, 320, 400, 480],
+
     },
 		{
-			name: '今日',
+			name: '政策补贴金额（万元）',
         type: 'line',
      //   smooth: true,
         symbol: 'circle',
         symbolSize: 3,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#58c8da',
                 width: 2
             }
         },
        	itemStyle: {normal: {color: '#58c8da',}},
-        data: [8,4, 6,  5,4,  6, 2, 1, 7, 6, 8, 4 ],
-        
+        data: [20, 50, 80, 120, 200, 280, 350],
+
     }
 	]
 };
@@ -591,7 +598,7 @@ option = {
         bottom: '0',
         containLabel: true
     },
-  
+
     xAxis: [{
         type: 'category',
 		// boundaryGap: false,
@@ -673,7 +680,7 @@ option = {
         bottom: '0',
         containLabel: true
     },
-  
+
     xAxis: [{
         type: 'category',
 		 boundaryGap: false,
@@ -730,10 +737,10 @@ option = {
                 width: 2
             }
         },
-      
+
 		itemStyle: {normal: {color: '#58c8da',}},
        data: [8, 6, 8, 4,4,  6, 2,4, 6,  5, 1, 7 ],
-        
+
     },
 		{
 			name: '今日',
@@ -749,18 +756,18 @@ option = {
             }
 
         },
-			
+
 		 lineStyle: {
-			
+
             normal: {
 				color: '#f7b851',
                 width: 2
             }
         },
-			
+
        	itemStyle: {normal: {color: '#f7b851',}},
         data: [8, 4, 6, 7, 6, 8, 4,  5, 4,  6, 2, 6 ],
-        
+
     },
 		{
 			name: '平均',
@@ -770,7 +777,7 @@ option = {
         symbolSize: 3,
         showSymbol: false,
 		 lineStyle: {
-			
+
             normal: {
 				color: '#fff',
                 width: 1,
@@ -779,7 +786,7 @@ option = {
         },
        	itemStyle: {normal: {color: '#fff',}},
         data: [5,5, 5,  5,5,  5, 5, 5, 5, 5, 5, 5 ],
-        
+
     }
 	]
 };
@@ -792,12 +799,12 @@ option = {
 
 
 
-		
-		
-		
 
 
-		
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
-﻿ $(window).load(function(){  
+﻿ $(window).load(function(){
              $(".loading").fadeOut()
-            })  
-			
+            })
+
 /****/
 /****/
 $(document).ready(function(){
@@ -49,7 +49,7 @@ $(document).ready(function(){
  						color: 'rgba(255,255,255,.6)'
  					}
  				},
- 				data: ['10.2', '10.3', '10.4', '10.5', '10.6', '10.7']
+ 				data: ['3.2', '3.3', '3.4', '3.5', '3.6', '3.7']
  			}],
  			yAxis: [{
  				axisLabel: {
@@ -60,7 +60,7 @@ $(document).ready(function(){
  				},
  				axisLine: {
 					show: false,
- 					
+
  				},
  				splitLine: {
  					lineStyle: {
@@ -120,31 +120,14 @@ $(document).ready(function(){
             trigger: 'axis'
         },
         radar: {
-            indicator: [{
-                name: '开料',
-                max: 100,
-                num:60,
-            }, {
-                name: '仓库',
-                max: 100,
-                num:33,
-            }, {
-                name: '包装',
-                max: 100,
-                num:10,
-            }, {
-                name: '分拣',
-                max: 100,
-                num:50,
-            }, {
-                name: '排钻',
-                max: 100,
-                num:100,
-            }, {
-                name: '封边',
-                max: 100,
-                num:100,
-            }],
+			indicator: [
+				{ name: '设计构思', max: 100 },  // 创意方案完成度
+				{ name: '线稿绘制', max: 100 },  // 传统技法数字化率
+				{ name: '色彩填充', max: 100 },  // 颜料消耗合理指数
+				{ name: '细节刻画', max: 100 },  // 非遗技法还原度
+				{ name: '装裱工艺', max: 100 },  // 传统装裱完成度
+				{ name: '数字化保存', max: 100 }  // 数字档案完整率
+			],
             splitNumber: 4,
 			 nameGap: 0,
             axisLine: { //指向外圈文本的分隔线样式
@@ -165,7 +148,7 @@ $(document).ready(function(){
             },
             name: {
                 color: 'rgba(255,255,255,.8)',
-				
+
             },
         },
         series: [{
@@ -206,7 +189,7 @@ $(document).ready(function(){
  						color: '#57617B'
  					}
  				},
- 				formatter: '{b}:<br/> 产量统计{c}'
+ 				formatter: '{b}:<br/> 使用人数{c}'
  			},
 
  			grid: {
@@ -236,7 +219,7 @@ $(document).ready(function(){
  				},
  				axisLine: {
 					show: false,
- 					
+
  				},
  				splitLine: {
  					lineStyle: {
@@ -278,7 +261,7 @@ $(document).ready(function(){
  						borderWidth: 12
  					}
  				},
- 				data: [33, 80, 20, 60, 10, 91]
+ 				data: [33, 78, 25, 56, 14, 91]
  			}]
  		};
 
